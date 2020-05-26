@@ -4,23 +4,24 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 import login.api.LoginApi
 import login.api.LoginCallback
 import login.api.RegisterCallback
-
-const val clientId = "IYFdqXZYo2ryFXNxDFCLrEqONWOTk-QrxVOIzvwJ_D_iJxRMlmUCBiXXGxPthFBP4B906jZCnXQ7TfcF7ykveQ=="
-const val baseUrl = "https://a4a49f60-9edb-11ea-b43f-93aac17785e0.sandbox.native-api.auth.asliri.id"
+import login.api.client.RegisterResponse
 
 class MainActivity : AppCompatActivity() {
     lateinit var mytext: TextView
+    lateinit var username: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        LoginApi.client().configure(this, clientId, baseUrl)
 
         mytext = findViewById(R.id.mytext)
+        username = findViewById(R.id.editText)
 
     }
 
@@ -39,6 +40,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    val registerCallback2 = object: RegisterCallback {
+        override fun onComplete(response: RegisterResponse) {
+            if (response.success) {
+                mytext.text = "Successfully registered"
+            }
+            else {
+                mytext.text = "Did not successfully register ${editText.text}: ${response.errorMessage}"
+            }
+        }
+    }
+
 
     val loginCallback = LoginCallback { loginResponse ->
         if (loginResponse.success) {
@@ -50,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun register(view: View) {
-        LoginApi.client().register(this, registerCallback)
+        LoginApi.client().registerWithUsername(this, editText.text.toString(), registerCallback2)
     }
 
     fun hasAccount(view: View) {
@@ -72,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun login(view: View) {
-        LoginApi.client().login(this, loginCallback)
+        LoginApi.client().login(this@MainActivity, editText.text.toString(), loginCallback)
     }
 
 }

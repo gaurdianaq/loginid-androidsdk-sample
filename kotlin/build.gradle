@@ -22,10 +22,6 @@ allprojects {
         jcenter()
         maven {
             url "https://sdk.dev.loginid.io/repository/maven-releases"
-            credentials {
-                username = "loginid"
-                password = "myloginidsandbox"
-            }
         }
     }
 }

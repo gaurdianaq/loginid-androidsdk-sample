@@ -5,17 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import io.loginid.api.LoginidApi
-import io.loginid.api.LoginidRegisterCallback
-import io.loginid.api.model.client.RegisterResponse
+import login.api.LoginApi
+import login.api.LoginCallback
+import login.api.RegisterCallback
+
+const val clientId = "IYFdqXZYo2ryFXNxDFCLrEqONWOTk-QrxVOIzvwJ_D_iJxRMlmUCBiXXGxPthFBP4B906jZCnXQ7TfcF7ykveQ=="
+const val baseUrl = "https://a4a49f60-9edb-11ea-b43f-93aac17785e0.sandbox.native-api.auth.asliri.id"
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var mytext: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        LoginidApi.client().configure(this,"hRhrUIW0XGSRycDTFNvpy-CyJTdICfm5k5rmP5XI59Y7fZU67N2HkC1THx7g87Nfzv3v1585PH6R5DhIhKHkIQ==", "https://768ffe70-9dd3-11ea-8f78-0ba1ae20e4c1.sandbox-apse1.native-api.loginid.io")
+        LoginApi.client().configure(this, clientId, baseUrl)
 
         mytext = findViewById(R.id.mytext)
 
@@ -24,24 +27,52 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         // register handle intent result from Android biometrics and such
-        LoginidApi.client().handleIntentResult(requestCode,resultCode,data)
+        LoginApi.client().handleIntentResult(requestCode,resultCode,data)
     }
 
-    val registerCallback = LoginidRegisterCallback { response ->
+    val registerCallback = RegisterCallback { response ->
         if (response.success) {
-            mytext.text = "Successfully registered gaurdianaq"
+            mytext.text = "Successfully registered"
         }
         else {
-            mytext.text = "Did not successfully register"
+            mytext.text = "Did not successfully register: ${response.errorMessage}"
         }
     }
 
-    fun registerCallBack2(registerResponse: RegisterResponse) {
 
+    val loginCallback = LoginCallback { loginResponse ->
+        if (loginResponse.success) {
+            mytext.text = "Successfully logged in!"
+        }
+        else {
+            mytext.text = loginResponse.errorMessage
+        }
     }
 
     fun register(view: View) {
-        LoginidApi.client().registerWithUsername(this, "gaurdianaq") { registerResponse -> println("we did a thing!") }
+        LoginApi.client().register(this, registerCallback)
+    }
+
+    fun hasAccount(view: View) {
+        if (LoginApi.client().hasAccount()) {
+            mytext.text = "You have an account!"
+        }
+        else {
+            mytext.text = "You do not have an account, click register to create one!"
+        }
+    }
+
+    fun deleteAccount(view: View) {
+        if (LoginApi.client().deleteAccount()) {
+            mytext.text = "Delete successful!"
+        }
+        else {
+            mytext.text = "Delete failed!"
+        }
+    }
+
+    fun login(view: View) {
+        LoginApi.client().login(this, loginCallback)
     }
 
 }

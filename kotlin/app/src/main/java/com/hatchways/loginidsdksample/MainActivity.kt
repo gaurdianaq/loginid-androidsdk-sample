@@ -87,4 +87,16 @@ class MainActivity : AppCompatActivity() {
         LoginApi.client().login(this@MainActivity, editText.text.toString(), loginCallback)
     }
 
+    fun isLoggedIn(view: View) {
+        if (LoginApi.client().isLoggedIn) {
+            mytext.text = "You're logged in!"
+        }
+        else {
+            mytext.text = "You're not logged in!"
+        }
+    }
+
+    fun logOut(view: View) {
+        LoginApi.client().logout()
+    }
 }

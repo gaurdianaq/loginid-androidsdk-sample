@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             mytext.text = "Successfully registered"
         }
         else {
-            mytext.text = "Did not successfully register: ${response.errorMessage}"
+            mytext.text = "Did not successfully register ${editText.text}: ${response.errorMessage}"
         }
     }
 

@@ -12,8 +12,12 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'ClientID', System.getenv("LOGINIDCLIENTID")
+        it.buildConfigField 'String', 'BaseURL', System.getenv("LOGINIDBASEURL")
     }
 
     buildTypes {

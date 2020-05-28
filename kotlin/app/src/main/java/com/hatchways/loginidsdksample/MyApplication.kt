@@ -8,9 +8,8 @@ class MyApplication : Application() {
     // Overriding this method is totally optional!
     override fun onCreate() {
         super.onCreate()
-        System.getenv()
-        val clientId = System.getenv("LOGINIDCLIENTID")
-        val baseUrl = System.getProperty("LOGINIDBASEURL")
+        val clientId = BuildConfig.ClientID
+        val baseUrl = BuildConfig.BaseURL
         LoginApi.client().configure(this, clientId, baseUrl)
         // Required initialization logic here!
     }

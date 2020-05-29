@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">LoginIDSDKSample</string>
+    <string name="authenticated_message">You\'re authenticated!</string>
+    <string name="unauthenticated_message">You\'re not authenticated! Click the button to authenticate!</string>
+    <string name="authenticate_button_message">Authenticate</string>
+    <string name="login_button_message">Login</string>
+    <string name="register_button_message">Register</string>
+    <string name="logout_button_message">Logout</string>
 </resources>

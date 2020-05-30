@@ -6,4 +6,5 @@
     <string name="login_button_message">Login</string>
     <string name="register_button_message">Register</string>
     <string name="logout_button_message">Logout</string>
+    <string name="delete_account_button_message">Delete Account</string>
 </resources>

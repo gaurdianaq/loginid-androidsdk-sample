@@ -19,7 +19,4 @@ class AuthenticatedFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_authenticated, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 }

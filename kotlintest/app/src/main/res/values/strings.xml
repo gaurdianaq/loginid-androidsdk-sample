@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">kotlintest</string>
+    <string name="userNameHint">Username</string>
+    <string name="registerBtnlabel">Register</string>
+    <string name="registerWthUserBtnLabel">Register with Username</string>
+    <string name="loginBtnLabel">Login</string>
+    <string name="loginWthUserBtnLabel">Login with Username</string>
+    <string name="logoutBtnLabel">Logout</string>
+    <string name="hasAccountBtnLabel">Has Account?</string>
+    <string name="isLoggedInBtnLabel">Is Logged In?</string>
+    <string name="getUsernameBtnLabel">Get Username</string>
+    <string name="getJwtTokenBtnLabel">Get JWT Token</string>
+    <string name="deleteAccountBtnLabel">Delete Account</string>
 </resources>

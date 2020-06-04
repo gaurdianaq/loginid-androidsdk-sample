@@ -11,4 +11,8 @@
     <string name="getUsernameBtnLabel">Get Username</string>
     <string name="getJwtTokenBtnLabel">Get JWT Token</string>
     <string name="deleteAccountBtnLabel">Delete Account</string>
+
+    <string name="loginSuccessMsg">Login Success!</string>
+    <string name="logoutSuccessMsg">Successfully logged out!</string>
+    <string name="registerSuccessMsg">Register Success!</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.hatchways.loginidsdktest
 
 import android.app.Application
-import login.api.BuildConfig
 import login.api.LoginApi
 
 class MyApplication : Application(){

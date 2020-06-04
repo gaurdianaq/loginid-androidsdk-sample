@@ -3,14 +3,9 @@ package com.hatchways.loginidsdksample
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import login.api.LoginApi
-import login.api.LoginCallback
-import login.api.RegisterCallback
-import login.api.client.RegisterResponse
 
 class MainActivity : AuthActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

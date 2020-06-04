@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.hatchways.loginidsdktest", appContext.packageName)
+        assertEquals("com.hatchways.loginidsdksample", appContext.packageName)
     }
 }

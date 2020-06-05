@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_authenticated.*
 import login.api.LoginApi
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+//The fragment that displays when you're authenticated
 class AuthenticatedFragment : Fragment() {
 
     override fun onCreateView(

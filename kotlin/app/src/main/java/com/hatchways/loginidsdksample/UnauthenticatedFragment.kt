@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+//The fragment that displays when you're not authenticated
 class UnauthenticatedFragment : Fragment() {
 
     override fun onCreateView(

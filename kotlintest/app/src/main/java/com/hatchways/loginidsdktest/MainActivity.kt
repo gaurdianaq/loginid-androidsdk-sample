@@ -64,11 +64,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getUsername(view: View) {
-        output.text = LoginApi.client().currentUsername
+        if (LoginApi.client().currentUsername != null) {
+            output.text = LoginApi.client().currentUsername
+        }
+        else {
+            output.text = getString(R.string.notFoundMsg, "username")
+        }
+
     }
 
     fun getToken(view: View) {
-        output.text = LoginApi.client().currentAccessToken
+        if (LoginApi.client().currentAccessToken != null) {
+            output.text = LoginApi.client().currentAccessToken
+        }
+        else {
+            output.text = getString(R.string.notFoundMsg, "token")
+        }
+
     }
 
     fun logout(view: View) {
